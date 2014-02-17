@@ -1,13 +1,13 @@
 % No preconditioner is used.
 %
-% [M1,M2] = diavnd_pc_none(iB,H,R)
+% [M1,M2] = divand_pc_none(iB,H,R)
 %
 % Dummy function for requiring that no preconditioner is used in divand.
 %
 % See also:
 % diavnd_pc_michol, diavnd_pc_sqrtiB
 
-function [M1,M2] = diavnd_pc_none(iB,H,R)
+function [M1,M2] = divand_pc_none(iB,H,R)
 
 M1 = []; 
 M2 = [];

@@ -1,6 +1,6 @@
 % Compute a preconditioner using a modified incomplete Cholesky decomposition.
 %
-% [M1,M2] = diavnd_pc_michol(iB,H,R,icholparam)
+% [M1,M2] = divand_pc_michol(iB,H,R,icholparam)
 %
 % Compute preconditioner matrices M1 and M2 based on
 % the inverse background error covariance iB, observation operator
@@ -15,7 +15,7 @@
 % See also:
 % ichol, divand_pc_sqrtiB
 
-function [M1,M2] = diavnd_pc_michol(iB,H,R,icholparam)
+function [M1,M2] = divand_pc_michol(iB,H,R,icholparam)
 
 if nargin == 3
   icholparam = struct('michol','on');
