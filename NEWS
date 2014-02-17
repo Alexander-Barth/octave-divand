@@ -1,0 +1,15 @@
+Summary of important user-visible changes for divand 1.1.1:
+------------------------------------------------------------
+
+ ** Improved documentation
+
+Summary of important user-visible changes for divand 1.1:
+------------------------------------------------------------
+
+ ** new preconditioner: divand_pc_michol and divand_pc_sqrtiB 
+    for iterative method
+
+Summary of important user-visible changes for divand 1.0:
+------------------------------------------------------------
+
+ ** Initial release

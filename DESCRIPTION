@@ -1,0 +1,10 @@
+Name: divand
+Version: 1.1.1
+Date: 2014-02-12
+Author: Alexander Barth <barth.alexander@gmail.com>
+Maintainer: Alexander Barth <barth.alexander@gmail.com>
+Title: divand
+Description: divand performs an n-dimensional variational analysis (interpolation) of arbitrarily located observations.
+Depends: octave (>= 3.4.0), mapping
+License: GPLv2+
+Url: http://modb.oce.ulg.ac.be/mediawiki/index.php/divand, http://www.geosci-model-dev.net/7/225/2014/gmd-7-225-2014.html

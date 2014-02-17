@@ -1,0 +1,22 @@
+Please cite divand as follows if you use this software in a publication:
+
+  Barth, A., Beckers, J.-M., Troupin, C., Alvera-Azcárate, A., and
+  Vandenbulcke, L.: divand-1.0: n-dimensional variational data analysis
+  for ocean observations, Geosci. Model Dev., 7, 225-241,
+  doi:10.5194/gmd-7-225-2014, 2014.  
+  URL http://www.geosci-model-dev.net/7/225/2014/
+
+A BibTeX entry for LaTeX users is:
+
+  @Article{gmd-7-225-2014,
+    AUTHOR  = {Barth, A. and Beckers, J.-M. and Troupin, C. and Alvera-Azc\'arate, A. and Vandenbulcke, L.},
+    TITLE   = {divand-1.0: n-dimensional variational data analysis for ocean observations},
+    JOURNAL = {Geoscientific Model Development},
+    VOLUME  = {7},
+    YEAR    = {2014},
+    NUMBER  = {1},
+    PAGES   = {225--241},
+    URL     = {http://www.geosci-model-dev.net/7/225/2014/},
+    DOI     = {10.5194/gmd-7-225-2014}
+  }
+
