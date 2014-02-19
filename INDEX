@@ -82,6 +82,7 @@ Special matrices
   @DiagBlockMat/mldivide
   @DiagBlockMat/mtimes
   @DiagBlockMat/size
+  @DiagBlockMat/sum
   @MatFun/ctranspose
   @MatFun/double
   @MatFun/end
