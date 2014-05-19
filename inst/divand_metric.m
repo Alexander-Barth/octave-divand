@@ -16,10 +16,10 @@ i = 2:sz(1)-1;
 j = 2:sz(2)-1;
 
 
-dx = distance(lat(i-1,:),lon(i-1,:),lat(i+1,:),lon(i+1,:));
+dx = distance(lat(i-1,:),lon(i-1,:),lat(i+1,:),lon(i+1,:))/2;
 dx = cat(1,dx(1,:),dx,dx(end,:));
 
-dy = distance(lat(:,j-1),lon(:,j-1),lat(:,j+1),lon(:,j+1));
+dy = distance(lat(:,j-1),lon(:,j-1),lat(:,j+1),lon(:,j+1))/2;
 dy = cat(2,dy(:,1),dy,dy(:,end));
 
 dx = real(dx);
