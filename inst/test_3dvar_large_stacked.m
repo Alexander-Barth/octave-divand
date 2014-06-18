@@ -14,29 +14,14 @@ y = reshape(y,100,10);
 z = reshape(z,100,10);
 
 
-on = numel(x);
-var = 0.01 * ones(on,1);
 f = sin(6*x) .* cos(6*y) .* sin(6*z);
 
-if 0
-  x = .5;
-  y = .5; 
-  z = .5; 
-  f = 1;
-  var = 0.01;
-end
-
-m = 20;
 
 mask = ones(size(xi));
 pm = ones(size(xi)) / (xi(2,1,1)-xi(1,1,1));
 pn = ones(size(xi)) / (yi(1,2,1)-yi(1,1,1));
 po = ones(size(xi)) / (zi(1,1,2)-zi(1,1,1));
 
-%len = [.1 .1 .1];
-len = {.1,.1,.1};
-
-len = zeros(size(mask));
 len = {0.1*mask,0.1*mask,0.*mask};
 
 fi = divand(mask,{pm,pn,po},{xi,yi,zi},{x,y,z},f,len,20,'primal',1,'alpha',[1 2 1]);

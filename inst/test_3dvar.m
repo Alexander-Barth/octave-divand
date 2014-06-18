@@ -10,26 +10,30 @@ x = x(:);
 y = y(:);
 z = z(:);
 
-on = numel(x);
-var = 0.01 * ones(on,1);
+% reference field
 f = sin(6*x) .* cos(6*y) .* sin(6*z);
 
-if 0
-  x = .5;
-  y = .5; 
-  z = .5; 
-  f = 1;
-  var = 0.01;
-end
-
-m = 20;
-
+% all points are valid points
 mask = ones(size(xi));
+
+% this problem has a simple cartesian metric
+% pm is the inverse of the resolution along the 1st dimension
+% pn is the inverse of the resolution along the 2nd dimension
+% po is the inverse of the resolution along the 3rd dimension
 pm = ones(size(xi)) / (xi(2,1,1)-xi(1,1,1));
 pn = ones(size(xi)) / (yi(1,2,1)-yi(1,1,1));
 po = ones(size(xi)) / (zi(1,1,2)-zi(1,1,1));
 
-fi = divand(mask,{pm,pn,po},{xi,yi,zi},{x,y,z},f,.1,100);
+% correlation length
+len = 0.1;
+
+% signal-to-noise ratio
+lambda = 100;
+
+% fi is the interpolated field
+fi = divand(mask,{pm,pn,po},{xi,yi,zi},{x,y,z},f,len,lambda);
+
+% compute RMS to background field
 rms = sqrt(mean((fi_ref(:) - fi(:)).^2));
 
 if (rms > 0.04) 

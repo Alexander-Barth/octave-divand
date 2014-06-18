@@ -27,7 +27,8 @@ if isequal(arrayfun(@(k) nchoosek(m,k),0:m),alpha)
   
   [mu,K] = divand_kernel_binom(n,m);
 else
-  error('unsupported sequence of alpha')  
+  error('divand:divand_kernel:unsupported_alpha',...
+      'unsupported sequence of alpha')  
 end
 
 if nargin == 3

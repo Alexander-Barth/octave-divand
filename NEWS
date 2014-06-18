@@ -2,6 +2,7 @@ Summary of important user-visible changes for divand 1.1.2:
 ------------------------------------------------------------
 
  ** Include missing coefficient 2 in divand_metric.
+ ** Remove dependency to mapping package (which is currently unmaintained) 
 
 Summary of important user-visible changes for divand 1.1.1:
 ------------------------------------------------------------

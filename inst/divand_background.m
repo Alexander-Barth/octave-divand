@@ -128,7 +128,16 @@ if any(Ld <= 0)
 end
 
 
-coeff = divand_kernel(neff,alpha) * Ln; % units length^n
+try
+  coeff = divand_kernel(neff,alpha) * Ln; % units length^n
+catch ME
+  if strcmp(ME.identifier, 'divand:divand_kernel:unsupported_alpha')
+      warning('divand:divand_background:noscaling','no scaling');
+      coeff = 1;
+  else
+      rethrow(ME);
+  end
+end
 
 pmnv = reshape(pmn,numel(mask),n);
 pmnv(:,Ld == 0) = 1;
@@ -249,6 +258,7 @@ s.iscyclic = iscyclic;
 s.alpha = alpha;
 s.neff = neff;
 s.WE = WE; % units length^(n/2)
+
 % Copyright (C) 2014 Alexander Barth <a.barth@ulg.ac.be>
 %
 % This program is free software; you can redistribute it and/or modify it under

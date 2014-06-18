@@ -10,8 +10,6 @@ fi_ref = sin( xi*6 ) .* cos( yi*6);
 x = x(:);
 y = y(:);
 
-on = numel(x);
-var = 0.01 * ones(on,1);
 f = sin( x*6 ) .* cos( y*6);
 
 mask = ones(size(xi));
