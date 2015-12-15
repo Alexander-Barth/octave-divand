@@ -10,8 +10,10 @@
 % Ouput:
 %   H: sparse matrix with interpolation coefficients 
 %   out: true if value outside of grid
+%   outbbox: 1 if outise bouding box
+%   onland: 1 if point touches land (where mask == 0)
 
-function [H,out] = sparse_interp(mask,I,iscyclic)
+function [H,out,outbbox] = sparse_interp(mask,I,iscyclic)
 
 if ndims(mask) ~= size(I,1) && ~(isvector(mask) && size(I,1) == 1)
   error('sparse_interp: inconsistent arguments')
@@ -65,6 +67,7 @@ for i = 1:n
   end  
 end
 
+outbbox = ~inside;
 %whos ind
 
 % interpolation coefficient
@@ -105,7 +108,8 @@ end
 % sj must refer to a valid point or its interpolation coefficient
 % must be zero
 
-inside(iind) = all(mask(sj) | ss == 0,1);
+insidesea = all(mask(sj) | ss == 0, 1);
+inside(iind) = insidesea;
 H = sparse(iind(si(:)),sj(:),ss(:),mi,m);
 
 out = ~inside;

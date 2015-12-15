@@ -41,11 +41,13 @@ if isempty(I)
   I = localize_separable_grid(x,mask,xi);
 end
 
-[H,out] = sparse_interp(mask,I,iscyclic);
+[H,out,outbbox] = sparse_interp(mask,I,iscyclic);
 
 nout = sum(out);
 if nout ~= 0
-  fprintf(1,'Observations out of domain: %d\n',nout);
+    noutbbox = sum(outbbox);
+    %    fprintf(1,'Observations out of bounding box: %d and touching land %d\n',...
+    %  noutbbox,nout-noutbbox);
 end
 
 
