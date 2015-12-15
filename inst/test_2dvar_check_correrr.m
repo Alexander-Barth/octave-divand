@@ -18,7 +18,11 @@ yy = repmat(y,[1 numel(y)]);
 
 len = 0.1;
 variance = 0.1;
+
+% full obs. error covariance
 R = variance * exp(- ((xx - xx').^2 + (yy - yy').^2 ) / len^2);
+
+% Obs. error covariance object
 RC = CovarParam({x,y},variance,len);
 
 len = .1;
