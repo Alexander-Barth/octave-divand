@@ -47,13 +47,43 @@ f1 = (f(2:end,:,:) + f(1:end-1,:,:))/2;
 f2 = S*f(:);
 d(end+1) = max(abs(f1(:) - f2(:)));
 
-
 % dim 1 cyclic
 fc = cat(1,f,f(1,:,:));
 f1 = (fc(2:end,:,:) + fc(1:end-1,:,:))/2;
 
 S = sparse_stagger(size(f),1,true);
 f2 = S*f(:);
+d(end+1) = max(abs(f1(:) - f2(:)));
+
+
+% shifting
+
+S = sparse_shift(size(f),1);
+f1 = f(2:end,:,:);
+f2 = S*f(:);
+d(end+1) = max(abs(f1(:) - f2(:)));
+
+% trimming
+
+S = sparse_trim(size(f),1);
+f1 = f(2:end-1,:,:);
+f2 = S*f(:);
+d(end+1) = max(abs(f1(:) - f2(:)));
+
+% sparse pack
+
+mask = rand(size(f)) > 0;
+f1 = f(mask) ;
+f2 = sparse_pack(mask) * f(:);
+d(end+1) = max(abs(f1(:) - f2(:)));
+
+% sparse interp
+
+mask = true(size(mask));
+I = [2.5 2 2]';
+[H,out,outbbox] = sparse_interp(mask,I);
+f1 = (f(2,2,2) + f(3,2,2))/2;
+f2 = H*f(:);
 d(end+1) = max(abs(f1(:) - f2(:)));
 
 
