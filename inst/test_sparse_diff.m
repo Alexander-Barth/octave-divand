@@ -86,6 +86,46 @@ f1 = (f(2,2,2) + f(3,2,2))/2;
 f2 = H*f(:);
 d(end+1) = max(abs(f1(:) - f2(:)));
 
+% laplacian 1D
+
+x1 = 2 * (1:5)';
+mask = true(size(x1));
+pm = ones(size(x1))/2;
+
+DD = divand_laplacian(mask,{pm},ones(size(x1)),[false]);
+f = 2*x1.^2;
+Df1 = 4;
+Df2 = reshape(DD * f(:), size(mask));
+Df2 = Df2(2:end-1);
+d(end+1) = max(abs(Df1(:) - Df2(:)));
+
+
+% sparse gradient 2D
+
+[x1,x2] = ndgrid(2*(1:4),3*(1:3));
+mask = true(size(x1));
+pm = ones(size(x1))/2;
+pn = ones(size(x1))/3;
+[Dx,Dy] = sparse_gradient(mask,cat_cell_array({pm,pn}));
+f = 2*x1 + x2;
+Df1 = 2 * ones(3,3);
+Df2 = Dx * f(:);
+d(end+1) = max(abs(Df1(:) - Df2(:)));
+
+
+% laplacian 2D
+
+[x1,x2] = ndgrid((1:4),(1:3));
+mask = true(size(x1));
+pm = ones(size(x1));
+pn = ones(size(x1));
+DD = divand_laplacian(mask,{pm,pn},ones(size(mask)),[false,false]);
+f = 2*x1.^2 + x2;
+Df1 = 4;
+Df2 = reshape(DD * f(:), size(mask));
+Df2 = Df2(2:end-1,2:end-1);
+d(end+1) = max(abs(Df1(:) - Df2(:)));
+
 
 if any(d > 1e-6) 
   error('unexpected large difference with reference field');
